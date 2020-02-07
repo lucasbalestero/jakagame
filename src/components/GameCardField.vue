@@ -210,7 +210,9 @@
         <v-card elevation="10" height dark width="100%" class="mr-2 pa-3 table" v-if="mostrarLogs">
           <fieldset>
               <legend style="border: 0px black solid;margin-left: 1em; padding: 0.2em 0.8em ">Logs</legend>
-              <span> {{ logs }} </span>
+              <div v-for="log in logs">
+                <span> {{ log }} </span>
+              </div>
           </fieldset>
         </v-card>
         
@@ -590,7 +592,7 @@ export default {
       mostrarMesaDoPlayer1: 0,
       cardTesteDoOponente: true,
 
-      logs: '',
+      logs: [],
       mostrarLogs: false,
       mostrarMsgDeAlertas: true,
       msgDeAlertaDisparar: false,
@@ -777,7 +779,7 @@ export default {
             let cartaRetirada = {}
             cartaRetirada = this.todasAsCartas.splice(indice, 1)
             this.carta8 = cartaRetirada[0]
-            this.logs = 'Cartas sacadas!'
+            this.logs.push('Cartas sacadas!');
             this.botaoInicial = false
             this.iniciouOjogo = true
           }
@@ -921,7 +923,7 @@ export default {
         }
 
         else {
-          this.logs = 'Cartas já foram sacadas!' 
+          this.logs.push('Cartas já foram sacadas!' );
         }
 
         
@@ -938,7 +940,7 @@ export default {
         let cartaRetirada = {}
         cartaRetirada = this.todasAsCartas.splice(indice, 1)
         this.carta1 = cartaRetirada[0]
-        this.logs = 'Você sacou uma carta do monte'
+        this.logs.push('Você sacou uma carta do monte');
         this.msgDeAlerta = 'Você sacou uma carta do monte'
         this.msgDeAlertaDisparar = true
         this.msgDeAlertaCor = 'blue'
@@ -1105,7 +1107,7 @@ export default {
         }
         else if (movimento === 11) {
           this.carta1 = ''
-          this.logs = 'Você descartou a primeira carta da sua mão'
+          this.logs.push('Você descartou a primeira carta da sua mão');
         }
         else {
           alert("Deu erro, entre em contato com o admin para informá-lo!")
@@ -1126,7 +1128,7 @@ export default {
             novaCarta5 = this.cartaOponente1
             this.cartaOponente1 = novaCarta1
             this.cartaOponente5 = novaCarta5
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 1 para o lugar da 5'
+            this.logs.push('Seu oponente movimentou a carta 1 para o lugar da 5');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 1 para o lugar da 5'
             this.msgDeAlertaCor = 'error'
@@ -1141,7 +1143,7 @@ export default {
             novaCarta5 = this.cartaOponente2
             this.cartaOponente2 = novaCarta2
             this.cartaOponente5 = novaCarta5
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 2 para o lugar da 5'
+            this.logs.push('Seu oponente movimentou a carta 2 para o lugar da 5');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 2 para o lugar da 5'
             this.msgDeAlertaCor = 'error'
@@ -1156,7 +1158,7 @@ export default {
             novaCarta5 = this.cartaOponente3
             this.cartaOponente3 = novaCarta3
             this.cartaOponente5 = novaCarta5
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 3 para o lugar da 5'
+            this.logs.push('Seu oponente movimentou a carta 3 para o lugar da 5');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 3 para o lugar da 5'
             this.msgDeAlertaCor = 'error'
@@ -1171,7 +1173,7 @@ export default {
             novaCarta5 = this.cartaOponente4
             this.cartaOponente4 = novaCarta4
             this.cartaOponente5 = novaCarta5
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 4 para o lugar da 5'
+            this.logs.push('Seu oponente movimentou a carta 4 para o lugar da 5');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 4 para o lugar da 5'
             this.msgDeAlertaCor = 'error'
@@ -1186,7 +1188,7 @@ export default {
             novaCarta5 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente5 = novaCarta5
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 6 para o lugar da 5'
+            this.logs.push('Seu oponente movimentou a carta 6 para o lugar da 5');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 6 para o lugar da 5'
             this.msgDeAlertaCor = 'error'
@@ -1201,7 +1203,7 @@ export default {
             novaCarta7 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente7 = novaCarta7
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 7 para o lugar da 6'
+            this.logs.push( 'Seu oponente movimentou a carta 7 para o lugar da 6');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 7 para o lugar da 6'
             this.msgDeAlertaCor = 'error'
@@ -1216,7 +1218,7 @@ export default {
             novaCarta8 = this.cartaOponente7
             this.cartaOponente7 = novaCarta7
             this.cartaOponente8 = novaCarta8
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 8 para o lugar da 7'
+            this.logs.push('Seu oponente movimentou a carta 8 para o lugar da 7');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 8 para o lugar da 7'
             this.msgDeAlertaCor = 'error'
@@ -1235,7 +1237,7 @@ export default {
             novaCarta5 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente5 = novaCarta5
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 5 para o lugar da 6'
+            this.logs.push('Seu oponente movimentou a carta 5 para o lugar da 6');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 5 para o lugar da 6'
             this.msgDeAlertaCor = 'error'
@@ -1250,7 +1252,7 @@ export default {
             novaCarta7 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente7 = novaCarta7
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 7 para o lugar da 6'
+            this.logs.push('Seu oponente movimentou a carta 7 para o lugar da 6');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 7 para o lugar da 6'
             this.msgDeAlertaCor = 'error'
@@ -1265,7 +1267,7 @@ export default {
             novaCarta7 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente7 = novaCarta7
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 7 para o lugar da 6'
+            this.logs.push('Seu oponente movimentou a carta 7 para o lugar da 6');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 7 para o lugar da 6'
             this.msgDeAlertaCor = 'error'
@@ -1280,7 +1282,7 @@ export default {
             novaCarta1 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente1 = novaCarta1
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 1 para o lugar da 6'
+            this.logs.push('Seu oponente movimentou a carta 1 para o lugar da 6');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 1 para o lugar da 6'
             this.msgDeAlertaCor = 'error'
@@ -1295,7 +1297,7 @@ export default {
             novaCarta2 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente2 = novaCarta2
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 2 para o lugar da 6'
+            this.logs.push('Seu oponente movimentou a carta 2 para o lugar da 6');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 2 para o lugar da 6'
             this.msgDeAlertaCor = 'error'
@@ -1310,7 +1312,7 @@ export default {
             novaCarta3 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente3 = novaCarta3
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 3 para o lugar da 6'
+            this.logs.push('Seu oponente movimentou a carta 3 para o lugar da 6');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 3 para o lugar da 6'
             this.msgDeAlertaCor = 'error'
@@ -1325,7 +1327,7 @@ export default {
             novaCarta4 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente4 = novaCarta4
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 4 para o lugar da 6'
+            this.logs.push('Seu oponente movimentou a carta 4 para o lugar da 6');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 4 para o lugar da 6'
             this.msgDeAlertaCor = 'error'
@@ -1344,7 +1346,7 @@ export default {
             novaCarta1 = this.cartaOponente7
             this.cartaOponente7 = novaCarta7
             this.cartaOponente1 = novaCarta1
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 1 para o lugar da 7'
+            this.logs.push('Seu oponente movimentou a carta 1 para o lugar da 7');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 1 para o lugar da 7'
             this.msgDeAlertaCor = 'error'
@@ -1359,7 +1361,7 @@ export default {
             novaCarta2 = this.cartaOponente7
             this.cartaOponente7 = novaCarta7
             this.cartaOponente2 = novaCarta2
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 2 para o lugar da 7'
+            this.logs.push('Seu oponente movimentou a carta 2 para o lugar da 7');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 2 para o lugar da 7'
             this.msgDeAlertaCor = 'error'
@@ -1374,7 +1376,7 @@ export default {
             novaCarta3 = this.cartaOponente7
             this.cartaOponente7 = novaCarta7
             this.cartaOponente3 = novaCarta3
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 3 para o lugar da 7'
+            this.logs.push('Seu oponente movimentou a carta 3 para o lugar da 7');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 3 para o lugar da 7'
             this.msgDeAlertaCor = 'error'
@@ -1389,7 +1391,7 @@ export default {
             novaCarta4 = this.cartaOponente7
             this.cartaOponente7 = novaCarta7
             this.cartaOponente4 = novaCarta4
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 4 para o lugar da 7'
+            this.logs.push('Seu oponente movimentou a carta 4 para o lugar da 7');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 4 para o lugar da 7'
             this.msgDeAlertaCor = 'error'
@@ -1404,7 +1406,7 @@ export default {
             novaCarta5 = this.cartaOponente7
             this.cartaOponente7 = novaCarta7
             this.cartaOponente5 = novaCarta5
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 5 para o lugar da 7'
+            this.logs.push('Seu oponente movimentou a carta 5 para o lugar da 7');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 5 para o lugar da 7'
             this.msgDeAlertaCor = 'error'
@@ -1419,7 +1421,7 @@ export default {
             novaCarta7 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente7 = novaCarta7
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 7 para o lugar da 6'
+            this.logs.push('Seu oponente movimentou a carta 7 para o lugar da 6');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 7 para o lugar da 6'
             this.msgDeAlertaCor = 'error'
@@ -1434,7 +1436,7 @@ export default {
             novaCarta7 = this.cartaOponente6
             this.cartaOponente6 = novaCarta6
             this.cartaOponente7 = novaCarta7
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 7 para o lugar da 6'
+            this.logs.push('Seu oponente movimentou a carta 7 para o lugar da 6');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 7 para o lugar da 6'
             this.msgDeAlertaCor = 'error'
@@ -1453,7 +1455,7 @@ export default {
             novaCarta1 = this.cartaOponente8
             this.cartaOponente8 = novaCarta8
             this.cartaOponente1 = novaCarta1
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 1 para o lugar da 8'
+            this.logs.push('Seu oponente movimentou a carta 1 para o lugar da 8');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 1 para o lugar da 8'
             this.msgDeAlertaCor = 'error'
@@ -1468,7 +1470,7 @@ export default {
             novaCarta2 = this.cartaOponente8
             this.cartaOponente8 = novaCarta8
             this.cartaOponente2 = novaCarta2
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 2 para o lugar da 8'
+            this.logs.push('Seu oponente movimentou a carta 2 para o lugar da 8');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 2 para o lugar da 8'
             this.msgDeAlertaCor = 'error'
@@ -1483,7 +1485,7 @@ export default {
             novaCarta3 = this.cartaOponente8
             this.cartaOponente8 = novaCarta8
             this.cartaOponente3 = novaCarta3
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 3 para o lugar da 8'
+            this.logs.push('Seu oponente movimentou a carta 3 para o lugar da 8');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 3 para o lugar da 8'
             this.msgDeAlertaCor = 'error'
@@ -1498,7 +1500,7 @@ export default {
             novaCarta4 = this.cartaOponente8
             this.cartaOponente8 = novaCarta8
             this.cartaOponente4 = novaCarta4
-            this.logs = this.logs + '' + 'Seu oponente movimentou a carta 4 para o lugar da 8'
+            this.logs.push('Seu oponente movimentou a carta 4 para o lugar da 8');
             this.msgDeAlertaDisparar = true
             this.msgDeAlerta = 'Seu oponente movimentou a carta 4 para o lugar da 8'
             this.msgDeAlertaCor = 'error'
@@ -1713,7 +1715,7 @@ export default {
               let cartaRetirada = {}
               cartaRetirada = this.todasAsCartas.splice(indice, 1)
               this.cartaOponente1 = cartaRetirada[0]
-              this.logs = 'A Bruna sacou uma carta do monte'
+              this.logs.push('A Bruna sacou uma carta do monte');
               this.msgDeAlerta = 'A Bruna sacou uma carta do monte'
               this.msgDeAlertaDisparar = true
               this.msgDeAlertaCor = 'warning'
@@ -1729,7 +1731,7 @@ export default {
               let cartaRetirada = {}
               cartaRetirada = this.todasAsCartas.splice(indice, 1)
               this.cartaOponente2 = cartaRetirada[0]
-              this.logs = 'A Bruna sacou uma carta do monte'
+              this.logs.push('A Bruna sacou uma carta do monte');
               this.msgDeAlerta = 'A Bruna sacou uma carta do monte'
               this.msgDeAlertaDisparar = true
               this.msgDeAlertaCor = 'warning'
@@ -1745,7 +1747,7 @@ export default {
               let cartaRetirada = {}
               cartaRetirada = this.todasAsCartas.splice(indice, 1)
               this.cartaOponente3 = cartaRetirada[0]
-              this.logs = 'A Bruna sacou uma carta do monte'
+              this.logs.push('A Bruna sacou uma carta do monte');
               this.msgDeAlerta = 'A Bruna sacou uma carta do monte'
               this.msgDeAlertaDisparar = true
               this.msgDeAlertaCor = 'warning'
@@ -1761,7 +1763,7 @@ export default {
               let cartaRetirada = {}
               cartaRetirada = this.todasAsCartas.splice(indice, 1)
               this.cartaOponente4 = cartaRetirada[0]
-              this.logs = 'A Bruna sacou uma carta do monte'
+              this.logs.push('A Bruna sacou uma carta do monte');
               this.msgDeAlerta = 'A Bruna sacou uma carta do monte'
               this.msgDeAlertaDisparar = true
               this.msgDeAlertaCor = 'warning'
@@ -1777,7 +1779,7 @@ export default {
               let cartaRetirada = {}
               cartaRetirada = this.todasAsCartas.splice(indice, 1)
               this.cartaOponente1 = cartaRetirada[0]
-              this.logs = 'A Bruna sacou uma carta do monte'
+              this.logs.push('A Bruna sacou uma carta do monte');
               this.msgDeAlerta = 'A Bruna sacou uma carta do monte'
               this.msgDeAlertaDisparar = true
               this.msgDeAlertaCor = 'warning'
@@ -1876,7 +1878,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -1906,7 +1908,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -1936,7 +1938,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -1966,7 +1968,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -1999,7 +2001,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2029,7 +2031,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2059,7 +2061,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2089,7 +2091,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaCor = 'blue'
                   this.msgDeAlertaTime = 3000
@@ -2121,7 +2123,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2151,7 +2153,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2181,7 +2183,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2211,7 +2213,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2243,7 +2245,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2273,7 +2275,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2303,7 +2305,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2333,7 +2335,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente1 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2380,7 +2382,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente1 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -2412,7 +2414,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente1 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -2444,7 +2446,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente1 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -2476,7 +2478,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente1 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -2528,7 +2530,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2558,7 +2560,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2588,7 +2590,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2618,7 +2620,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2651,7 +2653,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2681,7 +2683,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2711,7 +2713,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2741,7 +2743,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2773,7 +2775,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2803,7 +2805,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2833,7 +2835,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2863,7 +2865,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2895,7 +2897,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2925,7 +2927,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2955,7 +2957,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -2985,7 +2987,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente2 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3032,7 +3034,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente2 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -3064,7 +3066,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente2 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -3096,7 +3098,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente3 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -3128,7 +3130,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente4 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -3180,7 +3182,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3210,7 +3212,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3240,7 +3242,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3270,7 +3272,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3303,7 +3305,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3333,7 +3335,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3363,7 +3365,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3393,7 +3395,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3425,7 +3427,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3455,7 +3457,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3485,7 +3487,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3515,7 +3517,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3547,7 +3549,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3577,7 +3579,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3607,7 +3609,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3637,7 +3639,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente3 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3684,7 +3686,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente3 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -3716,7 +3718,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente3 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -3748,7 +3750,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente3 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -3780,7 +3782,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente3 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -3832,7 +3834,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3862,7 +3864,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3892,7 +3894,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3922,7 +3924,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3955,7 +3957,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -3985,7 +3987,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4015,7 +4017,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4045,7 +4047,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4077,7 +4079,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4107,7 +4109,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4137,7 +4139,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4167,7 +4169,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4199,7 +4201,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4229,7 +4231,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4259,7 +4261,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4289,7 +4291,7 @@ export default {
                   cartaRetirada = this.todasAsCartas.splice(indice, 1)
                   this.cartaOponente4 = cartaRetirada[0]
 
-                  this.logs = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
+                  this.logs.push('A Bruna repoz a carta da mesa e da mão com duas cartas do monte');
                   this.msgDeAlerta = 'A Bruna repoz a carta da mesa e da mão com duas cartas do monte'
                   this.msgDeAlertaDisparar = true
                   this.msgDeAlertaCor = 'blue'
@@ -4332,7 +4334,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente4 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -4364,7 +4366,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente4 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -4396,7 +4398,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente4 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
@@ -4428,7 +4430,7 @@ export default {
                 cartaRetirada = this.todasAsCartas.splice(indice, 1)
                 this.cartaOponente4 = cartaRetirada[0]
                 
-                this.logs = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
+                this.logs.push('Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!');
                 this.msgDeAlerta = 'Você perdeu o desafio, as cartas usadas no desafio foram descartadas e agora é a vez da Bruna!'
                 this.msgDeAlertaDisparar = true
                 this.msgDeAlertaCor = 'error'
